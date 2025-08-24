@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero-section bg-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h1 class="display-4 fw-bold">Welcome to Our Bank</h1>
+                <p class="lead">Secure, reliable, and convenient banking solutions for all your financial needs.</p>
+                {% if not current_user.is_authenticated %}
+                <div class="mt-4">
+                    <a href="{{ url_for('register') }}" class="btn btn-light btn-lg me-3">Open an Account</a>
+                    <a href="{{ url_for('login') }}" class="btn btn-outline-light btn-lg">Online Banking</a>
+                </div>
+                {% else %}
+                <div class="mt-4">
+                    <a href="{{ url_for('dashboard') }}" class="btn btn-light btn-lg">Go to Dashboard</a>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="{{ url_for('static', filename='img/banking.svg') }}" alt="Banking" class="img-fluid" style="max-height: 300px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="features-section py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Why Choose Our Bank?</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="fas fa-shield-alt fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">Secure Banking</h5>
+                        <p class="card-text">Your money is safe with our advanced security measures and encryption technologies.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="fas fa-mobile-alt fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">24/7 Access</h5>
+                        <p class="card-text">Bank anytime, anywhere with our online and mobile banking platforms.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="fas fa-hand-holding-usd fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">Low Fees</h5>
+                        <p class="card-text">Enjoy competitive rates and low fees on all our banking products and services.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
